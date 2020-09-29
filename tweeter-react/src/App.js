@@ -3,7 +3,7 @@ import './App.css';
 import Navigation from './components/Navigation';
 import Profile from './components/Profile';
 import TweetForm from './components/TweetForm';
-import Tweet from './components/Tweet';
+import Tweets from './components/Tweets';
 
 const initialTweetData = [
   {
@@ -16,7 +16,7 @@ const initialTweetData = [
   },
   {
     id: 2,
-    name: 'Rafaela Tam',
+    name: 'Raf Tam',
     handle: '@rTam',
     avatars: 'https://i.imgur.com/nlhLi3I.png',
     message: 'I wanna go to Europe!',
@@ -26,10 +26,6 @@ const initialTweetData = [
 
 function App() {
   const [tweetData, setTweetData] = useState(initialTweetData);
-
-  const tweets = tweetData.map((tweet) => {
-    return <Tweet key={tweet.id} tweet={tweet} />;
-  });
 
   const addNewTweet = (message) => {
     const newTweet = {
@@ -49,7 +45,7 @@ function App() {
         <Profile />
         <main className='container'>
           <TweetForm addNewTweet={addNewTweet} />
-          {tweets}
+          <Tweets tweetData={tweetData} />
           {/* <Tweet tweets={tweets} /> */}
         </main>
       </div>
